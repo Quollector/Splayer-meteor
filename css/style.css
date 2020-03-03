@@ -201,11 +201,13 @@ html, body{
     transform: translateY(-50%);
     left: 30px;
 
-    opacity: 0.5;
+    opacity: 0;
 
     text-align: center;
 
     border-radius: 20px;
+
+    transition: opacity 0.3s ease;
 }
 
 .view-volume-container i{

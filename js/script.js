@@ -86,6 +86,22 @@ document.addEventListener('DOMContentLoaded', () => {
         element.style.height = indiceVolume + '%';
     })
 
+    btnVolumeUp.addEventListener('mouseover', function(){
+        document.querySelector('.view-volume-container').style.opacity = 0.8;
+    })
+
+    btnVolumeDown.addEventListener('mouseover', function(){
+        document.querySelector('.view-volume-container').style.opacity = 0.8;
+    })
+
+    btnVolumeUp.addEventListener('mouseout', function(){
+        document.querySelector('.view-volume-container').style.opacity = 0;
+    })
+
+    btnVolumeDown.addEventListener('mouseout', function(){
+        document.querySelector('.view-volume-container').style.opacity = 0;
+    })
+
     lecteur.onended = function(){
         iconPlay.style.display = "block";
         iconPause.style.display = "none";
