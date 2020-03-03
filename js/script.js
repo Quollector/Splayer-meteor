@@ -25,8 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var element = document.querySelector('.view-volume');
     var indiceVolume = parseInt(element.style.height);
 
-    console.log(indiceVolume);
-
     /* Action controls */
 
     var playOrStop = 0;    
@@ -54,10 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             iconPlay.style.display = "block";
             iconPause.style.display = "none";
-
-            console.log(circleProgress.style.strokeDasharray);
-            console.log(circleProgress.style.strokeDashoffset);
-            console.log('pause');
 
             playOrStop = 0;
         }
