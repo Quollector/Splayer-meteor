@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Splayer Meteor Armageddon</title>
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="meteor meteor-volumeDown">
+            <div><i class="material-icons">volume_down</i></div>
+        </div>
+
+        <div class="meteor meteor-play">
+            <div>
+                <i class="material-icons material-play">play_arrow</i>
+                <i class="material-icons"><span class=" material-pause">pause</span></i>
+            </div>
+        </div>
+        
+        <div class="meteor meteor-volumeUp">
+            <div><i class="material-icons">volume_up</i></div>
+        </div>
+        
+        <div class="meteor meteor-stop">
+            <div><i class="material-icons">stop</i></div>
+        </div>     
+
+        <div class="meteor-screen-box">
+            <div>
+                <div class="meteor-screen">
+                    <video id="tagVideo" preload="metadata" src="https://download.blender.org/peach/trailer/trailer_400p.ogg"></video>
+                </div>      
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="meteor-screen-duration">
+                    <circle id="circleProgress" cx="50%" cy="50%" r="45%"/>
+                </svg>  
+            </div>                
+        </div>  
+
+        <div class="view-volume-container">
+            <i class="material-icons">volume_up</i>
+            <div class="view-volume-box">
+                <div class="view-volume" style="height: 50%;">
+                    &nbsp;
+                </div>
+            </div>
+            <i class="material-icons">volume_off</i>
+        </div>
+
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
