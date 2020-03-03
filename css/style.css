@@ -1,0 +1,386 @@
+/* ----- Général ----- */
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Wrapper général */
+.wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    
+    background-image: url(../images/background.jpg);
+    background-size: cover;
+}
+
+/* ----- Météores ----- */
+/* Général */
+.meteor{
+    width: 15vh;
+    height: 15vh;
+    position: absolute;
+    border-radius: 50%;
+
+    background-image: url(../images/meteore.png);
+    background-position: left;
+    background-size: contain; 
+
+    z-index: 2;
+}
+
+.meteor div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meteor i{
+    font-size: 8em;
+    color: #515151;
+    mix-blend-mode: screen;
+
+    transition: color 0.5s linear;    
+
+    cursor: pointer;
+}
+
+.meteor-previous i::after, .meteor-next i::after{
+    content: "";
+    border: 1px solid #515151;
+    position: absolute;
+    width: 50%;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: border 0.5s linear;
+    mix-blend-mode: screen;
+}
+
+.meteor i:hover{       
+    color: #2A3477;
+}
+
+.meteor i:hover::after{       
+    border: 1px solid #2A3477;
+}
+
+/* Screen */
+
+.meteor-screen-box{
+    width: 50vh;
+    height: 50vh;
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url(../images/meteore.png);
+    background-position: center center;
+    background-size: cover;
+
+    animation-name: move-meteor-screen;
+    animation-duration: 80s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+
+.meteor-screen-box > div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.meteor-screen{
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;    
+
+    box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.5);
+    opacity: 0.6;
+}
+
+.meteor-screen video{
+    object-fit: cover;
+}
+
+.meteor-screen-duration{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0.6;
+
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg);
+}
+
+#circleProgress{    
+    display: none;
+    fill: rgba(0,0,0,0);
+    stroke-width: 5px;
+    stroke: white;
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 1500;
+}
+
+.progressBar{    
+    animation: testStroke;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.meteor-screen video{
+    height: 100%;
+    width: auto;
+}
+
+/* Controls */
+.meteor-volumeDown{  
+    animation-name: move-meteor-volumeDown;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.meteor-play{  
+    animation-name: move-meteor-play;
+    animation-duration: 40s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.meteor-volumeUp{    
+    animation-name: move-meteor-volumeUp;
+    animation-duration: 25s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.meteor-stop{    
+    animation-name: move-meteor-stop;
+    animation-duration: 35s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.material-pause{
+    display: none;
+}
+
+/* Volume */
+.view-volume-container{
+    position: absolute;
+    background-color: rgba(255,255,255,0.3);
+    width: 30px;
+
+    top: 50%;
+    transform: translateY(-50%);
+    left: 30px;
+
+    opacity: 0.5;
+
+    text-align: center;
+
+    border-radius: 20px;
+}
+
+.view-volume-container i{
+    margin-top: 5px;
+    color: rgba(255,255,255,0.6);
+}
+
+.view-volume-box{
+    position: relative;
+
+    width: 50%;
+    height: 350px;
+
+    margin: auto;
+}
+
+.view-volume{
+    width: 100%;
+
+    background-color: rgba(255,255,255,0.3);;
+
+    position: absolute;
+    bottom: 0;
+
+    border-radius: 10px;
+}
+
+
+/* ----- Animations ----- */
+
+@keyframes move-meteor-volumeDown{
+    0%{
+        top: 50%;
+        left: 0%;
+        z-index: 2;
+        transform: translate(-100%, 0%) scale(0.7) rotate(0deg);
+    }
+
+    50.5%{
+        top: 37%;
+        left: 100%;
+        z-index: 2;
+        transform: translate(50%, 0%) scale(1) rotate(270deg);
+    }
+
+    51%{
+        top: 12%;
+        left: 100%;
+        z-index: 0;
+        transform: translate(0%, 0%) scale(0.4) rotate(270deg);
+    }
+
+    100%{
+        top: 50%;
+        left: 0%;        
+        z-index: 0;
+        transform: translate(-100%, 0%) scale(0.7) rotate(410deg);
+    }
+}
+
+@keyframes move-meteor-play{
+    0%{
+        top: 0%;
+        left: 22%;
+        z-index: 2;
+        transform: translate(0%, -100%) scale(0.8) rotate(20deg);
+    }
+
+    50.5%{
+        top: 100%;
+        left: 35%;
+        z-index: 2;
+        transform: translate(100%, 30%) scale(1.1) rotate(250deg);
+    }
+
+    51%{
+        top: 100%;
+        left: 62%;
+        z-index: 0;
+        transform: translate(100%, 30%) scale(1.1) rotate(270deg);
+    }
+
+    100%{
+        top: 0%;
+        left: 81%;        
+        z-index: 0;
+        transform: translate(0%, -100%) scale(0.6) rotate(410deg);
+    }
+}
+
+@keyframes move-meteor-volumeUp{
+    0%{
+        top: 80%;
+        left: 100%;
+        z-index: 2;
+        transform: translate(50%, 0%) scale(0.8) rotate(20deg);
+    }
+
+    50.5%{
+        top: 0%;
+        left: 62%;
+        z-index: 2;
+        transform: translate(0%, -120%) scale(0.6) rotate(130deg);
+    }
+
+    51%{
+        top: 0%;
+        left: 41%;
+        z-index: 0;
+        transform: translate(0%, -120%) scale(1) rotate(130deg);
+    }
+
+    100%{
+        top: 100%;
+        left: 22%;        
+        z-index: 0;
+        transform: translate(-100%, 0%) scale(0.6) rotate(275deg);
+    }
+}
+
+@keyframes move-meteor-stop{
+    0%{
+        top: 100%;
+        left: 75%;
+        z-index: 0;
+        transform: translate(-100%, 0%) scale(0.7) rotate(20deg);
+    }
+
+    50.5%{
+        top: 0%;
+        left: 49%;
+        z-index: 0;
+        transform: translate(0%, -100%) scale(1) rotate(130deg);
+    }
+
+    51%{
+        top: 0%;
+        left: 49%;
+        z-index: 2;
+        transform: translate(0%, -100%) scale(1) rotate(130deg);
+    }
+
+    100%{
+        top: 100%;
+        left: 22%;        
+        z-index: 2;
+        transform: translate(-100%, 0%) scale(1.3) rotate(275deg);
+    }
+}
+
+@keyframes move-meteor-screen{
+    0%, 100%{
+        transform: translate(-50%, -50%);
+    }
+
+    20%{
+        transform: translate(-60%, -15%);
+    }
+
+    40%{
+        transform: translate(-45%, -30%);
+    }
+
+    60%{
+        transform: translate(-20%, -40%);
+    }
+
+    80%{
+        transform: translate(-35%, -60%);
+    }
+    
+}
+
+@keyframes testStroke{
+    to{
+        stroke-dashoffset: 0;
+    }
+}
