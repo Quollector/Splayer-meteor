@@ -42,7 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
             circleProgress.style.display = "block";
             circleProgress.classList.add("progressBar");
 
-            circleProgress.style.animationDuration = lecteur.duration + "s";
+            circleProgress.style.animationDuration = lecteur.duration + "s";            
+
+            circleProgress.style.animationPlayState = "running"
 
             playOrStop = 1;
         }
@@ -55,17 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             playOrStop = 0;
 
-            /* Calcul arrêt progress bar */
-
-            // Pourcentage de vidéo jouée au click 'pause'
-            var pourcentageVideo = (lecteur.currentTime/lecteur.duration)*100;
-
-            console.log("Pourcentage vidéo :" + pourcentageVideo + "%");
-
-            // Valeur de progress bar au click 'pause'
-            var valeurProgressPause = (circumferenceCircle/100)*pourcentageVideo;
-
-            console.log("Progress bar :" + valeurProgressPause);
+            circleProgress.style.animationPlayState = "paused"
         }
         
     });
